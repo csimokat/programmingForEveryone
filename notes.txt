@@ -1,0 +1,445 @@
+Programming for Everybody
+
+Week 1
+
+Goals:
+1) How to take a programming class
+2) How to mentor others in how to learn programming
+3) A kit of free and open materials
+
+Guido van Rossum - creator of Python
+
+Textbook Python for Informatics: Exploring Information
+
+Syllabus:
+Week 1 - Ch 1: Why We Program
+Week 2 - Installing and Using Python
+Week 3 - Ch 1: Why We Program (con't)
+Week 4 - Ch 2: Variables and Expressions
+Week 5 - Ch 3: Conditional Code
+Week 6 - Ch 4: Functions
+Week 7 - Ch 5: Loops and Iterations
+
+Book chapters and the course sequence:
+Getting Started with Python Ch 1-5
+Python Data Structures Ch 6-10
+Using Python to Access Web Data Ch 11-13
+Using Databases with Python Ch 14-15
+
+Processors ask "what's next" learning to program gives you a language to tell it what you want it to do.
+
+Purpose is to change from mindset of the user to the mindset of the programmer (from outside to in)
+
+Why be a programmer?
+1) To get some task done - we are the user and the programmer
+2) To produce something for others to use - a programming job
+
+Computers do exactly what we say not what we mean them to do
+
+words.py, words.txt, clown.txt
+
+name = raw_input('Enter file:')
+handle = open(name, 'r')
+text = handle.read()
+words = text.split()
+counts = dict()
+
+for word in words:
+	counts[word] = counts.get(word,0) + 1
+	
+bigcount = None
+bigword = None
+
+for word,count in counts.items():
+	if bigcount is None or count > bigcount:
+		bigword = word
+		bigcount = count
+		
+print bigword,bigcount
+
+Easier to teach you how to speak to Python than it is to teach Python to really listen to you
+
+Week 2
+
+Raspberry Pi's look fun
+
+Week 3
+
+Interactive vs Script
+Interactive - You type directly into Python one line at a time and it responds
+Script - You enter a sequence of statements (lines) into a file using a text editor and tell Python 
+to execute the statements in the file (batch)
+
+Week 4
+
+Variables, expressions, and statements
+
+Constants - typed things that don't change e.g. numbers, strings, etc
+
+Variables - A named place in the computer memory which stores data for use later
+
+Values of variables can be changed constants cannot
+
+Python variables must:
+1) Must start with a letter or underscore _
+2) Must consist only of letters and numbers and underscores
+3) Case Sensitive
+
+Underscores are typically used in libraries not really in a normal Python program
+
+Variables cannot be any of the reserved words
+
+Assignments
+We assign a value to a variable using the assigment statement =
+Assignment statements contain expressions on the right hand side and variables on the left
+
+Operation
++  - addition
+-  - subtraction
+*  - multiplication
+/  - division
+** - power
+%  - remainder (modular)
+
+Operator precedence rules
+- paranthesis are always respected
+- exponents
+- mult, div, remainder
+- add/sub
+- left to right
+
+in Python 2, 9/2 = 4
+in Python 3, 9/2 = 4.5
+in Python 2 you need to make them floating point to get the expected result
+
+concatenate, put two strings together
+
+We can instruct Python to pause and read data from the user using raw_input() which returns a string
+
+inp = raw_input('Europe floor?')
+usf = int(inp) + 1
+print "US floor", usf
+
+# is used for comments in Python, useful for documentation, authorship, or testing by turning off a line of code
+
+Week 5
+
+Conditional Execution
+
+Conditional steps are ones that may or may not be executed
+<  - less than
+<= - less than or equal to
+== - equal to
+>= - great than or equal to
+>  - greater than
+!= - not equal
+
+Indentation
+Python is one of the few languages where space is syntactically significant
+- Increase indent after an if statement or for statement
+- Maintain indent to indicate scope of the block
+- Reduce indent to back to the level of the if statement or for statement to indicate the end of the block
+- Blank lines are ignored they do not affect indentation
+- Comments on a line by themselves are ignored wrt indentation
+
+Warning: Turn off tabs
+- Most text editors can turn tabs into spaces - make sure to enable this feature
+NP++: Settings -> Preferences -> Language Menu / Tab Settings
+TextWrangler: TextWranger -> Preferences -> Editor Defaults
+- Python cares a lot about how far line is indented. If you mix tabs and spaces you may get indentation errors.
+
+Nested decisions
+blocks in blocks to structure the flow of the program
+
+Try and except
+- You should surround a dangerous section of code with try and except
+- If the code in the try works the except is skipped
+- If the code in the try fails it jumps to the except section
+
+try:
+	#code here
+except:
+	#alternate code
+		
+Massimo Banzi - Arduino
+Hernando Barragan thesis project reimplemented MIT Process API's to run on Arduino chip
+
+Week 6
+
+Functions
+
+Dr. Chuck Severance
+North Quad - University of Michigan, Ann Arbor, MI
+
+def hello():
+	print 'Hello'
+	print 'Fun'
+
+hello()
+print 'zip'
+hello()
+
+output:
+Hello
+Fun
+Zip
+Hello
+Fun
+
+functions - reusable pieces of code
+def is short for defined
+
+Stored and reused steps - functions are defined and stored at first and then reused when called later in the program
+
+There are two types of functions
+1) Built-in functions that are provided by Python e.g. raw_input(), type(), float(), int(), max()
+	- These functions are already written not something you need to create
+2) User defined functions (such as the hello() example above) that we define ourselves and use
+
+A function is some stored code that we use a function takes some input and produces and output
+
+We create new function using the def keyword followed by optional parameters in the parenthesis
+- indent the body of the function
+- this defines the function, but does not execute of the body of the function
+
+Arguments
+- An argument isa value we pass into the function as its input when we call the function
+- We use arguments so we can direct the function to do different kinds of work when we call it at different times
+- We put the arguments in the parenthesis after the name of the function
+
+Return values - a function often takes an argument and does something to it and then returns a value
+
+e.g.
+def greet():
+	return .'Hello'
+
+print greet(), 'Glenn'    #outputs Hello Glen
+
+Can have multiple parameters, but remember that order matters when passing arguments into your function
+
+Functions that have no return are called void functions
+
+To function or not to function
+- Organize your code into "paragraphs" - capture a complete thought and "name it"
+- Don't repeat yourslef - make it work once and then reuse it
+- If something gets too long or complex, break up logical chunks, and put those chunks in functions
+- Make a library of common stuff that you do over and over - perhaps share this with your friends
+
+Its a natural extension when things start getting complex, but is not always needed for simple tasks/programs
+
+Guido van Rossum - The early years of Python
+Amoeba operating system
+
+abc could of been the language of spreadsheets. Focused on general data types focused on user data.
+Python was what he built from scratch from what he learned in abc project
+
+February 1991 - first Python release on usenet alt.sources
+First Python workshop at NIST in Maryland in 1994
+
+Python 1.5.2 was the gold standard of Python for a long time
+-- Interesting since that now seems to be more so Python 2.7 particularly in the Big Data space
+
+Week 7
+
+Loops and Iteration - repeated steps
+
+Loops are repeated steps and iteratino variables that change each time through a loop. 
+Often these iteraction variables go through a sequence of numbers.
+
+n = 5
+while n > 0 :
+	print n
+	n = n -1
+print "Blastoff!"
+print n
+
+prints: 5, 4, 3, 2, 1. Loop ends when n = 0 so last print is 0.
+
+Example of an infinite loop
+n = 5
+while n > 0 :
+	print "Lather"
+	print "Rinse"
+print "Dry off!"
+
+Example of a loop that never runs zero trip
+n = 0
+while n > 0 :
+	print "Lather"
+	print "Rinse"
+print "Dry off!"
+
+Breaking out of a loop
+
+The break statement ends the current loop and jumps to the statement right after the loop
+It is a like a loop test that can happen anywhere in the body of the loop
+
+while True:
+	line = raw_input('>')
+	if line == 'done'
+		break
+	print line
+print 'Done'
+
+Finishing an iteration with continue
+
+A continue statement ends the curretn iteration and jumps to the top of the loop and starts the next iteration
+
+while True:
+	line = raw_input('>')
+	if line[0] == '#':
+		continue
+	if line == 'done'
+		break
+	print line
+print 'Done'
+
+While loops are called "indefinite loops" because they keep going until a logical condition becomes false
+Sometimes it is hard to tell by inspection if a loop will terminate
+
+Definite Loops
+
+Often there is a list of items in the lines ofa file or otherwise a finite set of things
+It is possible to write a loop for each item in the set using for construct
+These loops are called "definite loops" because they execute an exact number of times
+We say that "definite loops iterate through the members of a set"
+
+for i in [5, 4, 3, 2, 1]:
+	print i
+print 'Blastoff!'
+
+A simple definite loop
+
+friends = ['Joseph', 'Glenn', 'Sally']
+
+for friend in friends :
+	print 'Happy New Year:', friend
+	
+print 'Done!'
+
+Looking at the in keyword
+
+the iteration variable iterages through the sequence (ordered set)
+the block/body of code is executed once for each value in the sequence
+the iteration variable moves through all of the values in the sequence
+
+Loop Idioms
+
+What we do in loops
+
+The trick is "knowing" something about the whole loop when you are stuck writing code that only sees one at a time
+
+What is the largest number?
+
+largest_so_far = -1
+print 'Before', largest_so_far
+for the_num in [9, 41, 12, 3, 74, 15] :
+	if the_num > largest_so_far :
+		largest_so_far = the_num
+	print largest_so_far, the_num
+print 'After', largest_so_far
+
+Counting in a loop
+To count how many times we execute a loop we introduce a counter variable that starts at 0 and we add one to it each
+time through the loop
+
+zork = 0
+print 'Before', zork
+for thing in [9, 41, 12, 3, 74, 15] :
+	zork = zork + 1
+	print zork, thing
+print 'After', zork
+
+Summing in a loop
+
+zork = 0
+print 'Before', zork
+for thing in [9, 41, 12, 3, 74, 15] :
+	zork = zork + thing
+	print zork, thing
+print 'After', zork
+
+Find the average in a loop
+
+count = 0
+sum = 0
+print 'Before', count, sum
+for value in [9, 41, 12, 3, 74, 15] :
+	count = count + 1
+	sum = sum + value
+	print count, sum, value
+print 'After', count, sum, sum/count
+
+Filtering in a loop
+
+We use an if statement in the loop to catch/filter the values we are looking for
+
+print 'Before'
+for value in [9, 41, 12, 3, 74, 15] :
+	if value > 20 :
+		print 'Large number', value
+print 'After'
+
+Search using a boolean variable
+
+If we just want to search and know if a value was found
+We use a variable that starts at False and set to True as soon as we find what we are looking for
+
+found = False
+print 'Before', found
+for value in [9, 41, 12, 3, 74, 15] :
+	if value == 3 :
+		found = True
+	print found, value
+print 'After', found
+
+
+Largest and Smallest
+
+largest_so_far = -1
+print 'Before', largest_so_far
+for the_num in [9, 41, 12, 3, 74, 15] :
+	if the_num > largest_so_far :
+		largest_so_far = the_num
+	print largest_so_far, the_num
+print 'After', largest_so_far
+
+What needs to change to find the smallest?
+
+smallest_so_far = None
+print 'Before', largest_so_far
+for the_num in [9, 41, 12, 3, 74, 15] :
+	if smallest_so_far is None :
+		smallest_so_far = the_num
+	elif the_num < smallest_so_far :
+		smallest_so_far = the_num
+	print smallest_so_far, the_num
+print 'After', smallest_so_far
+
+Special value variable called None which is its own type
+
+The "is" and "is not" operators
+
+Python has an is operator that case be used in logical expressions
+imples is the same as in type and in value
+similar to but stronger than ==
+"is not" is also a logical operator
+These are best used for special values like None, True, False
+
+Exercise 5.1 in the book input sequence:
+4, 5, bad data, 7, done
+
+Guido van Rossum - The Modern Era of Python
+Created in 1989, but released as open source in 1991
+First Python workshop held by NIST in 1994 ~20-25 attendees
+
+Python 2 had issue with CNRI due to how Guido left and originally created/released Python
+Python still has an unusual license for open source project
+Circa 2000
+After dotcom burst 5 core contributors went to Zope
+Only other group would have been ActiveState
+Guido wants the Python community to selforganize not just look to him for answer
+Python Warts? Things that keep tripping people up over and over -- objective problems with Python
+~2005 fixes to the warts led to begining to design Python 3000
+At PyCon every year there is a census on who is using Python2 vs Python3
+There are arguments to still build a Python 2.8 even though Python 3 is the future of the language
